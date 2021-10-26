@@ -1,10 +1,10 @@
-package asia.ptyin.toyftpserver;
+package asia.ptyin.springftpd;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ToyftpserverApplicationTests
+class SpringFtpdApplicationTests
 {
 
     @Test
