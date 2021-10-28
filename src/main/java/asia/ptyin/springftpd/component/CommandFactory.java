@@ -1,12 +1,12 @@
 package asia.ptyin.springftpd.component;
 
 /***
- * FTP connection acquired by the server
+ * Factory class to produce Command object.
  * @version 0.1.0
  * @author PTYin
  * @since 0.1.0
  */
-public interface FtpConnection
+public interface CommandFactory
 {
-    
+    Command getCommand();
 }

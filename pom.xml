@@ -12,7 +12,7 @@
     <artifactId>springftpd</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>springftpd</name>
-    <description>a toy FTP server application based on Springboot</description>
+    <description>a minimum FTP server application based on Springboot</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -21,7 +21,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
