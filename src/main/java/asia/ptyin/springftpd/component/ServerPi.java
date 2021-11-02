@@ -1,6 +1,5 @@
 package asia.ptyin.springftpd.component;
 
-import java.net.ServerSocket;
 
 /***
  * Server Protocol Interpreter
@@ -11,5 +10,4 @@ import java.net.ServerSocket;
 public interface ServerPi extends TcpServer
 {
     ControlConnection establishControlConnection();
-    ServerSocket getSocket();
 }

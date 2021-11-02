@@ -1,21 +1,21 @@
-package asia.ptyin.springftpd.property;
+package asia.ptyin.springftpd.property.server;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 import java.net.InetAddress;
 
 /***
- * Configuration properties related to server.
+ * Configuration properties related to server DTP
  * @version 0.1.0
  * @author PTYin
  * @since 0.1.0
  */
-@Component
+@Configuration
 @Data
-@ConfigurationProperties(prefix = "springftpd.server.pi")
-public class ServerProperties
+@ConfigurationProperties(prefix = "springftpd.server.dtp")
+public class ServerDtpProperties
 {
     /**
      * The port listened on.

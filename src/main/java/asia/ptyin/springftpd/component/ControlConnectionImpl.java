@@ -1,10 +1,12 @@
 package asia.ptyin.springftpd.component;
 
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 /***
@@ -13,12 +15,19 @@ import java.net.Socket;
  * @author PTYin
  * @since 0.1.0
  */
-@Log4j2
+@Slf4j
 @Scope("prototype")
 @Component
 public class ControlConnectionImpl implements ControlConnection
 {
+    private ServerSocket serverPiSocket;
     private Socket clientSocket;
+
+    @Autowired
+    public void setServerPiSocket(ServerSocket serverPiSocket)
+    {
+        this.serverPiSocket = serverPiSocket;
+    }
 
     @Override
     public void setClientSocket(Socket clientSocket)
