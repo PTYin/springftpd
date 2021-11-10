@@ -8,5 +8,5 @@ package asia.ptyin.springftpd.component;
  */
 public interface CommandFactory
 {
-    Command getCommand();
+    Command getCommand(String message);
 }

@@ -1,6 +1,7 @@
 package asia.ptyin.springftpd.component;
 
 import java.net.Socket;
+import java.nio.channels.SocketChannel;
 
 /***
  * control connection established from user PI to server PI

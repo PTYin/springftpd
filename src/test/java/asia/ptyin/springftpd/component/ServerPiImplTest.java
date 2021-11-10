@@ -25,7 +25,7 @@ class ServerPiImplTest
 
     @Test
     @DisplayName("❤")
-    void testListen()
+    void testListen() throws IOException
     {
         server.listen();
     }

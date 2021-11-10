@@ -10,4 +10,5 @@ package asia.ptyin.springftpd.component;
 public interface ServerPi extends TcpServer
 {
     ControlConnection establishControlConnection();
+    int getLiveConnections();
 }

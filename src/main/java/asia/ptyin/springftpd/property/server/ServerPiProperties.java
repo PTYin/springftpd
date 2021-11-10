@@ -22,11 +22,15 @@ public class ServerPiProperties
      */
     private int port;
     /**
-     * the maximum length of request queue.
+     * The maximum length of request queue.
      */
     private int backlog;
     /**
-     * the maximum length of request queue.
+     * The address bound to.
      */
     private InetAddress address;
+    /**
+     * The maximum number of connections.
+     */
+    private int maxConnection;
 }

@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.channels.SocketChannel;
 
 /***
  *
@@ -20,13 +22,13 @@ import java.net.Socket;
 @Component
 public class ControlConnectionImpl implements ControlConnection
 {
-    private ServerSocket serverPiSocket;
+    private ServerPi serverPi;
     private Socket clientSocket;
 
     @Autowired
-    public void setServerPiSocket(ServerSocket serverPiSocket)
+    public void setServerPi(ServerPi serverPi)
     {
-        this.serverPiSocket = serverPiSocket;
+        this.serverPi = serverPi;
     }
 
     @Override
@@ -35,21 +37,41 @@ public class ControlConnectionImpl implements ControlConnection
         this.clientSocket = clientSocket;
     }
 
+    private synchronized void modifyServerPiLiveConnections()
+    {
+        serverPi.getLiveConnections();
+    }
+
+    private void processCommand(String message)
+    {
+
+    }
+
+    private void response(String message) throws IOException
+    {
+        var outputStream = clientSocket.getOutputStream();
+        var dataOutputStream = new DataOutputStream(outputStream);
+        dataOutputStream.writeUTF(message);
+    }
+
+    @SuppressWarnings("InfiniteLoopStatement")
     @Override
     public void run()
     {
-        try
+        while (true)
         {
-            while (true)
+            try
             {
-                var message = clientSocket.getInputStream();
-                log.info(String.format("FROM %s: %s", clientSocket, message));
+                var inputStream = clientSocket.getInputStream();
+                var dataInputStream = new DataInputStream(inputStream);
+                log.info(String.format("FROM %s: %s", clientSocket, dataInputStream.readUTF()));
                 // TODO do something
+
+            } catch (IOException e)
+            {
+                log.error(e.getMessage());
+                e.printStackTrace();
             }
-        } catch (IOException e)
-        {
-            log.error(e.getMessage());
-            e.printStackTrace();
         }
     }
 }
